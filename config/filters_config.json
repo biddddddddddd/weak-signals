@@ -1,0 +1,42 @@
+{
+  "trust_by_domain": {
+    "arxiv.org": 0.75,
+    "openalex.org": 0.8,
+    "nature.com": 0.95,
+    "science.org": 0.95,
+    "ieee.org": 0.9,
+    "acm.org": 0.9,
+    "springer.com": 0.85,
+    "elsevier.com": 0.85,
+    "ncbi.nlm.nih.gov": 0.9,
+    "zenodo.org": 0.3,
+    "researchgate.net": 0.4,
+    "medium.com": 0.2,
+    "substack.com": 0.2,
+    "default": 0.5
+  },
+
+  "excluded_types": [
+    "dataset",
+    "manifesto",
+    "report",
+    "editorial",
+    "letter",
+    "erratum",
+    "retraction"
+  ],
+
+  "excluded_author_patterns": [
+    "\\.com$",
+    "\\.org$",
+    "\\.io$",
+    "\\.net$",
+    "\\.ai$",
+    "^admin$",
+    "^unknown$",
+    "^anonymous$"
+  ],
+
+  "min_title_length": 10,
+  "min_abstract_length": 25
+}

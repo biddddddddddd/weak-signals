@@ -1,0 +1,80 @@
+{
+  "base_weights": {
+    "science": 1.0,
+    "preprint": 0.8,
+    "patent": 0.9,
+    "code": 0.8,
+    "gov": 0.7,
+    "conference": 0.7,
+    "vc": 0.6,
+    "tech_media": 0.6,
+    "vendor_blog": 0.4,
+    "mass_media": 0.3,
+    "social": 0.2
+  },
+
+  "regional_multipliers": {
+    "USA": {
+      "preprint": 1.4,
+      "code": 1.4,
+      "vc": 1.3,
+      "science": 1.1,
+      "patent": 1.0,
+      "gov": 0.9,
+      "tech_media": 1.0
+    },
+    "China": {
+      "patent": 1.5,
+      "gov": 1.4,
+      "vendor_blog": 1.3,
+      "preprint": 0.9,
+      "code": 0.8,
+      "tech_media": 0.8,
+      "science": 0.9
+    },
+    "Europe": {
+      "science": 1.3,
+      "gov": 1.3,
+      "patent": 1.2,
+      "preprint": 1.1,
+      "code": 0.9,
+      "tech_media": 0.9
+    },
+    "Japan": {},
+    "India": {},
+    "Russia": {},
+    "Global": {}
+  },
+
+  "default_multiplier": 1.0,
+
+  "domain_weights": {
+    "AI": {"science": 1.2, "preprint": 1.3, "patent": 0.9, "code": 1.2, "tech_media": 1.0},
+    "Edge": {"science": 1.0, "preprint": 1.1, "patent": 1.2, "code": 1.0, "tech_media": 0.9},
+    "AI_Security": {"science": 1.1, "preprint": 1.0, "patent": 1.1, "code": 1.1, "gov": 1.2},
+    "AI_Infrastructure": {"science": 1.0, "preprint": 1.1, "patent": 1.2, "code": 1.0, "tech_media": 1.0},
+    "Robotics": {"science": 1.2, "preprint": 1.2, "patent": 1.1, "code": 1.0, "conference": 1.2},
+    "Fintech": {"science": 0.9, "preprint": 0.9, "patent": 1.0, "gov": 1.3, "tech_media": 1.1},
+    "Industrial_AI": {"science": 1.1, "preprint": 1.0, "patent": 1.3, "code": 1.0, "tech_media": 0.9}
+  },
+
+  "thresholds": {
+    "min_trust": 0.5,
+    "min_specificity": 0.4,
+    "maturity_exclude": 0.85,
+    "hype_exclude": 0.8,
+    "freshness_min": 0.2
+  },
+
+  "corroboration": {
+    "min_sources": 3,
+    "min_types": 2,
+    "min_regions": 2,
+    "min_independence": 0.6
+  },
+
+  "final_weights": {
+    "rule_score": 0.6,
+    "ml_score": 0.4
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "sources": [
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/feed/",
+      "domain": "techcrunch.com",
+      "source_type": "mass_media",
+      "region": "USA",
+      "language": "en",
+      "trust": 0.6
+    },
+    {
+      "name": "EE Times",
+      "url": "https://www.eetimes.com/feed/",
+      "domain": "eetimes.com",
+      "source_type": "tech_media",
+      "region": "USA",
+      "language": "en",
+      "trust": 0.75
+    },
+    {
+      "name": "The Robot Report",
+      "url": "https://www.therobotreport.com/feed/",
+      "domain": "therobotreport.com",
+      "source_type": "tech_media",
+      "region": "USA",
+      "language": "en",
+      "trust": 0.7
+    },
+    {
+      "name": "Tech.eu",
+      "url": "https://tech.eu/feed/",
+      "domain": "tech.eu",
+      "source_type": "tech_media",
+      "region": "Europe",
+      "language": "en",
+      "trust": 0.7
+    },
+    {
+      "name": "The Next Web",
+      "url": "https://thenextweb.com/feed",
+      "domain": "thenextweb.com",
+      "source_type": "tech_media",
+      "region": "Europe",
+      "language": "en",
+      "trust": 0.7
+    },
+    {
+      "name": "Ars Technica",
+      "url": "https://feeds.arstechnica.com/arstechnica/index",
+      "domain": "arstechnica.com",
+      "source_type": "tech_media",
+      "region": "Europe",
+      "language": "en",
+      "trust": 0.75
+    },
+    {
+      "name": "TechNode",
+      "url": "https://technode.com/feed/",
+      "domain": "technode.com",
+      "source_type": "tech_media",
+      "region": "China",
+      "language": "en",
+      "trust": 0.7
+    },
+    {
+      "name": "Pandaily",
+      "url": "https://pandaily.com/feed/",
+      "domain": "pandaily.com",
+      "source_type": "tech_media",
+      "region": "China",
+      "language": "en",
+      "trust": 0.65
+    },
+    {
+      "name": "CNET Japan",
+      "url": "http://feeds.japan.cnet.com/cnet/rss",
+      "domain": "japan.cnet.com",
+      "source_type": "tech_media",
+      "region": "Japan",
+      "language": "ja",
+      "trust": 0.7
+    },
+    {
+      "name": "YourStory",
+      "url": "https://yourstory.com/feed",
+      "domain": "yourstory.com",
+      "source_type": "tech_media",
+      "region": "India",
+      "language": "en",
+      "trust": 0.65
+    },
+    {
+      "name": "CNews",
+      "url": "https://www.cnews.ru/inc/rss/news.xml",
+      "domain": "cnews.ru",
+      "source_type": "tech_media",
+      "region": "Russia",
+      "language": "ru",
+      "trust": 0.6
+    }
+  ]
+}
