@@ -1,0 +1,404 @@
+{
+  "signals": [
+    {
+      "name": "Quantum-inspired model compression for running LLMs on edge hardware",
+      "original_ru": "Квантово-инспирированное сжатие моделей для запуска LLM на edge-железе"
+    },
+    {
+      "name": "Identity and access management for AI agents",
+      "original_ru": "Identity and access management для ИИ-агентов"
+    },
+    {
+      "name": "Automated AI red-teaming as a service",
+      "original_ru": "Автоматизированный red-teaming ИИ-моделей как услуга"
+    },
+    {
+      "name": "MCP server security scanners and tool poisoning defense",
+      "original_ru": "Сканеры безопасности MCP-серверов и защита от tool poisoning"
+    },
+    {
+      "name": "CAD-native engineering intelligence: AI physics surrogates",
+      "original_ru": "CAD-native engineering intelligence: ИИ-суррогаты физики"
+    },
+    {
+      "name": "Autonomous procurement and supply chain agents in ERP",
+      "original_ru": "Автономные агенты закупок и цепей поставок в ERP"
+    },
+    {
+      "name": "Proactive AI agents for data center thermal management",
+      "original_ru": "Проактивные ИИ-агенты теплового управления ЦОД"
+    },
+    {
+      "name": "Neuromorphic chips for AI workloads",
+      "original_ru": "Нейроморфные чипы для ИИ-нагрузок"
+    },
+    {
+      "name": "Optical circuit switching in AI factories",
+      "original_ru": "Оптическая коммутация каналов в ИИ-фабриках"
+    },
+    {
+      "name": "KV cache tiering: context offloading to DRAM and NVMe",
+      "original_ru": "Тиринг KV-кэша: выгрузка контекста в DRAM и NVMe"
+    },
+    {
+      "name": "App store for robots: skill marketplaces",
+      "original_ru": "App Store для роботов: маркетплейсы навыков"
+    },
+    {
+      "name": "Mass-market quadruped inspectors",
+      "original_ru": "Массовые квадропеды-инспекторы вне премиум-сегмента"
+    },
+    {
+      "name": "Safety certification of physical AI",
+      "original_ru": "Сертификация безопасности физического ИИ"
+    },
+    {
+      "name": "Teleoperation data as a separate industry",
+      "original_ru": "Телеоперационные данные как отдельная индустрия"
+    },
+    {
+      "name": "Onboarding protection against injection attacks and deepfakes",
+      "original_ru": "Защита онбординга от инъекционных атак и дипфейков"
+    },
+    {
+      "name": "NPU inside battery-powered MCU and SoC for mass IoT",
+      "original_ru": "NPU внутри батарейных MCU и SoC для массового IoT"
+    },
+    {
+      "name": "Hybrid event-based vision sensors in automotive",
+      "original_ru": "Гибридные event-based сенсоры зрения в автопроме"
+    },
+    {
+      "name": "Orbital edge computing: inference on satellites",
+      "original_ru": "Орбитальный edge-компьютинг: инференс на спутниках"
+    },
+    {
+      "name": "Federated learning as sovereign deployment infrastructure",
+      "original_ru": "Федеративное обучение как инфраструктура суверенного развёртывания"
+    },
+    {
+      "name": "LLM firewalls at network and edge level",
+      "original_ru": "LLM-файрволы на сетевом и edge-уровне"
+    },
+    {
+      "name": "Self-healing prompt injection defense",
+      "original_ru": "Самозалечивающаяся защита от prompt injection"
+    },
+    {
+      "name": "AI governance and compliance automation under EU AI Act",
+      "original_ru": "Автоматизация AI-governance и compliance под EU AI Act"
+    },
+    {
+      "name": "Differentially private synthetic data",
+      "original_ru": "Дифференциально-приватные синтетические данные"
+    },
+    {
+      "name": "Confidential inference in TEE with remote attestation",
+      "original_ru": "Конфиденциальный инференс в TEE с удалённой аттестацией"
+    },
+    {
+      "name": "Statistical watermarks for LLM-generated text",
+      "original_ru": "Статистические водяные знаки для текста LLM"
+    },
+    {
+      "name": "Robotics foundation models trained on factory data",
+      "original_ru": "Robotics foundation models на данных заводов"
+    },
+    {
+      "name": "Vision foundation models for quality control",
+      "original_ru": "Vision foundation models для контроля качества"
+    },
+    {
+      "name": "Robot geologist: sensor fusion platform for ore exploration",
+      "original_ru": "Робот-геолог: сенсорная фьюжн-платформа для поиска руды"
+    },
+    {
+      "name": "Agentic AI inside OT stack with audited actions",
+      "original_ru": "Агентный ИИ внутри стека OT с журналируемыми действиями"
+    },
+    {
+      "name": "Adaptive autonomous welding with neural vision",
+      "original_ru": "Адаптивная автономная сварка с нейросетевым зрением"
+    },
+    {
+      "name": "AI operators for virtual power plants",
+      "original_ru": "ИИ-операторы виртуальных электростанций"
+    },
+    {
+      "name": "Next-generation wafer-scale: 3D stacked SRAM and DRAM",
+      "original_ru": "Wafer-scale нового поколения: 3D-стек SRAM и DRAM"
+    },
+    {
+      "name": "AI compilers and automatic inference optimization",
+      "original_ru": "ИИ-компиляторы и автоматическая оптимизация инференса"
+    },
+    {
+      "name": "Small modular reactors as AI data center power source",
+      "original_ru": "Малые модульные реакторы как источник питания ИИ-ЦОД"
+    },
+    {
+      "name": "Sovereign AI clouds in air-gapped mode",
+      "original_ru": "Суверенные ИИ-облака в air-gapped режиме"
+    },
+    {
+      "name": "Dexterous hands as standalone component market",
+      "original_ru": "Dexterity-кисти как самостоятельный компонентный рынок"
+    },
+    {
+      "name": "Swarm robotics emerging from the lab",
+      "original_ru": "Роевая робототехника выходит из лаборатории"
+    },
+    {
+      "name": "Dedicated edge silicon for VLA model inference",
+      "original_ru": "Специализированный edge-кремний под инференс VLA-моделей"
+    },
+    {
+      "name": "Voice AI agents for debt collection",
+      "original_ru": "Голосовые ИИ-агенты для взыскания долгов"
+    },
+    {
+      "name": "AI-native core banking systems",
+      "original_ru": "ИИ-native банковские ядра"
+    },
+    {
+      "name": "On-chain scoring and ratings for lending",
+      "original_ru": "Ончейн-скоринг и рейтинги для кредитования"
+    },
+    {
+      "name": "Local currency stablecoins and on-chain FX",
+      "original_ru": "Стейблкоины локальных валют и ончейн-FX"
+    },
+    {
+      "name": "Federated learning for interbank AML",
+      "original_ru": "Федеративное обучение для межбанковского AML"
+    },
+    {
+      "name": "Analog compute-in-memory chips for edge",
+      "original_ru": "Аналоговые compute-in-memory чипы для edge"
+    },
+    {
+      "name": "Neuromorphic edge processors in EDA flows",
+      "original_ru": "Нейроморфные edge-процессоры в EDA-потоках"
+    },
+    {
+      "name": "Edge AI orchestration across device fleets",
+      "original_ru": "Оркестрация Edge AI на парках устройств"
+    },
+    {
+      "name": "Photonic inference processors for SWaP systems",
+      "original_ru": "Фотонные процессоры инференса для SWaP-систем"
+    },
+    {
+      "name": "Machine unlearning for risk remediation",
+      "original_ru": "Machine unlearning как средство ремедиации рисков"
+    },
+    {
+      "name": "Interpretability as operational security control",
+      "original_ru": "Интерпретируемость как операционный защитный контроль"
+    },
+    {
+      "name": "Cryptographic verification of agent traffic",
+      "original_ru": "Криптографическая верификация трафика агентов"
+    },
+    {
+      "name": "Cryptographic model signing and AI-SBOM",
+      "original_ru": "Криптографическая подпись моделей и AI-SBOM"
+    },
+    {
+      "name": "Chain-of-thought monitoring for deception detection",
+      "original_ru": "Мониторинг chain-of-thought для детекции обмана"
+    },
+    {
+      "name": "Foundation models for industrial time series",
+      "original_ru": "Foundation-модели промышленных временных рядов"
+    },
+    {
+      "name": "Edge-based acoustic equipment diagnostics",
+      "original_ru": "Акустическая диагностика оборудования на edge"
+    },
+    {
+      "name": "AI process control in semiconductor fab",
+      "original_ru": "ИИ-управление процессами в полупроводниковом фабе"
+    },
+    {
+      "name": "Edge-to-cloud inference orchestration",
+      "original_ru": "Edge-to-cloud оркестрация инференса"
+    },
+    {
+      "name": "Capacity-oriented inference: CXL memory pools",
+      "original_ru": "Ёмкостно-ориентированный инференс: CXL-пулы памяти"
+    },
+    {
+      "name": "Decentralized inference networks",
+      "original_ru": "Децентрализованные сети инференса"
+    },
+    {
+      "name": "Orbital data centers and space-based inference",
+      "original_ru": "Орбитальные дата-центры и инференс в космосе"
+    },
+    {
+      "name": "Photonic processors for inference: computing with light",
+      "original_ru": "Фотонные процессоры для инференса: вычисления светом"
+    },
+    {
+      "name": "Cheap mass-produced autonomous underwater vehicles",
+      "original_ru": "Дешёвые массовые автономные подводные аппараты"
+    },
+    {
+      "name": "Robot insurance and RaaS contracts with SLA",
+      "original_ru": "Страхование роботов и RaaS-контракты с SLA"
+    },
+    {
+      "name": "Tactile-conditioned VLA models",
+      "original_ru": "Тактильно-обусловленные VLA-модели"
+    },
+    {
+      "name": "Egocentric human video for robot training",
+      "original_ru": "Эгоцентрическое человеческое видео для обучения роботов"
+    },
+    {
+      "name": "Purpose-Bound Money: programmable targeted currency",
+      "original_ru": "Purpose-Bound Money: программируемые целевые деньги"
+    },
+    {
+      "name": "Browser-native autonomous AI compliance agents",
+      "original_ru": "Браузерно-нативные автономные ИИ-агенты комплаенса"
+    },
+    {
+      "name": "Machine micropayments via HTTP 402",
+      "original_ru": "Машинные микроплатежи по HTTP 402"
+    },
+    {
+      "name": "Reusable ZK-verifiable credentials for KYC",
+      "original_ru": "Переиспользуемые ZK-верифицируемые credentials для KYC"
+    },
+    {
+      "name": "Payment authorization protocols for AI agents",
+      "original_ru": "Протоколы авторизации платежей ИИ-агентов"
+    },
+    {
+      "name": "Liability insurance for AI agent actions",
+      "original_ru": "Страхование ответственности за действия ИИ-агентов"
+    },
+    {
+      "name": "Tokenized money market fund shares as collateral",
+      "original_ru": "Токенизированные паи денежных фондов как обеспечение"
+    },
+    {
+      "name": "Agentic AI workflows on NPU PCs",
+      "original_ru": "Агентные AI-workflow на NPU ПК"
+    },
+    {
+      "name": "On-device fine-tuning and multi-LoRA on smartphones",
+      "original_ru": "Дообучение и мульти-LoRA на смартфоне"
+    },
+    {
+      "name": "Local SLM runtimes as anti-Big-Tech alternative",
+      "original_ru": "Локальные SLM-рантаймы как анти-Big-Tech"
+    },
+    {
+      "name": "Device-to-cloud routing layer",
+      "original_ru": "Маршрутизирующий слой устройство-облако"
+    },
+    {
+      "name": "Certified defense against agent memory poisoning",
+      "original_ru": "Сертифицированная защита от отравления памяти агентов"
+    },
+    {
+      "name": "Backdoor scanning in open-weight LLMs",
+      "original_ru": "Сканирование бэкдоров в open-weight LLM"
+    },
+    {
+      "name": "LLM generation of PLC code in IEC 61131-3",
+      "original_ru": "LLM-генерация кода ПЛК на IEC 61131-3"
+    },
+    {
+      "name": "Agentic generation of P&ID engineering documentation",
+      "original_ru": "Агентная генерация технологической документации P&ID"
+    },
+    {
+      "name": "Neuromorphic edge chips for equipment monitoring",
+      "original_ru": "Нейроморфные edge-чипы для мониторинга оборудования"
+    },
+    {
+      "name": "Self-learning control loops: RL on controller",
+      "original_ru": "Самообучающиеся контуры управления: RL на контроллере"
+    },
+    {
+      "name": "Cross-factory federated learning",
+      "original_ru": "Федеративное обучение между заводами"
+    },
+    {
+      "name": "3D-stacked compute-in-memory as HBM alternative",
+      "original_ru": "3D-стековая память-вычислитель как альтернатива HBM"
+    },
+    {
+      "name": "Analog in-memory computing",
+      "original_ru": "Аналоговые вычисления в памяти"
+    },
+    {
+      "name": "In-chip microfluidic cooling",
+      "original_ru": "Внутрикристальное микрофлюидное охлаждение"
+    },
+    {
+      "name": "Silicon for agentic AI: long context and KV-cache",
+      "original_ru": "Кремний под агентный ИИ: длинный контекст, KV-cache"
+    },
+    {
+      "name": "Superconducting and cryogenic computing for data centers",
+      "original_ru": "Сверхпроводящие и криогенные вычисления для ЦОД"
+    },
+    {
+      "name": "Simulation-first stacks with zero-shot transfer",
+      "original_ru": "Simulation-first стеки с zero-shot переносом"
+    },
+    {
+      "name": "Soft robotic cells: intelligence embedded in material",
+      "original_ru": "Мягкие робо-клетки: интеллект в материале"
+    },
+    {
+      "name": "Medical microrobots reaching clinical use",
+      "original_ru": "Медицинские микророботы, доходящие до клиники"
+    },
+    {
+      "name": "Know Your Agent: AI agent identity",
+      "original_ru": "Know Your Agent: идентичность ИИ-агентов"
+    },
+    {
+      "name": "Benchmarks and stress tests for trading LLM agents",
+      "original_ru": "Бенчмарки и стресс-тесты LLM-агентов для трейдинга"
+    },
+    {
+      "name": "Bank deposit tokens on public blockchains",
+      "original_ru": "Депозитные токены банков на публичных блокчейнах"
+    },
+    {
+      "name": "Confidential computing on edge devices",
+      "original_ru": "Confidential computing на edge-устройствах"
+    },
+    {
+      "name": "In-sensor and processing-in-pixel computing",
+      "original_ru": "In-sensor и processing-in-pixel вычисления"
+    },
+    {
+      "name": "Speculative decoding with flash memory offloading",
+      "original_ru": "Спекулятивный декодинг с выгрузкой во флеш-память"
+    },
+    {
+      "name": "Biohybrid actuators based on living muscle tissue",
+      "original_ru": "Биогибридные приводы на живой мышечной ткани"
+    },
+    {
+      "name": "Self-healing materials and electronic skin",
+      "original_ru": "Самовосстанавливающиеся материалы и e-skin"
+    },
+    {
+      "name": "Electrohydraulic HASEL artificial muscles",
+      "original_ru": "Электрогидравлические искусственные мышцы HASEL"
+    },
+    {
+      "name": "Post-quantum cryptography in financial infrastructure",
+      "original_ru": "Постквантовая криптография в финансовой инфраструктуре"
+    }
+  ]
+}

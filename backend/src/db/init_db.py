@@ -1,7 +1,15 @@
 from loguru import logger
-
 from src.db.connection import Base, engine
-from src.db.models import Source, Document  # noqa: F401 — важно для регистрации
+from src.db.models import (  # noqa: F401 — важно для регистрации
+    Source,
+    Document,
+    WeakSignal,
+    NegativeSignal,
+    ScoredDocument,
+    RawWeakSignal,
+    RawNegativeSignal,
+    RawJunkSignal,
+)
 
 
 def init_db():

@@ -10,6 +10,11 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U weaksignals"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   backend:
     build: ./backend
@@ -17,13 +22,17 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
     environment:
       DATABASE_URL: postgresql://weaksignals:weaksignals@postgres:5432/weaksignals
     volumes:
       - ./backend:/app
       - ./config:/app/config
       - ./data:/app/data
+    working_dir: /app
     command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
 
 volumes:

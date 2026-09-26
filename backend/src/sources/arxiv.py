@@ -1,7 +1,31 @@
 import asyncio
 import arxiv
+import re
 from typing import List, Dict
 from loguru import logger
+
+try:
+    from deep_translator import GoogleTranslator
+except Exception:
+    GoogleTranslator = None
+
+
+def _is_cyrillic(text: str) -> bool:
+    return bool(re.search(r"[а-яА-ЯёЁ]", text))
+
+
+def _translate_to_en(query: str) -> str:
+    if not _is_cyrillic(query):
+        return query
+    if GoogleTranslator is None:
+        return query
+    try:
+        translated = GoogleTranslator(source="auto", target="en").translate(query)
+        logger.info(f"Translated query: '{query}' → '{translated}'")
+        return translated or query
+    except Exception as e:
+        logger.warning(f"Translate failed: {e}")
+        return query
 
 
 async def search_arxiv(
@@ -9,18 +33,15 @@ async def search_arxiv(
     max_results: int = 50,
     max_retries: int = 3,
 ) -> List[Dict]:
-    """
-    Ищет статьи на arXiv по запросу. Retry при 429.
-    Возвращает список документов. НЕ сохраняет в БД.
-    """
-    logger.info(f"arXiv search: query='{query}', max_results={max_results}")
+    query_en = _translate_to_en(query)
+    logger.info(f"arXiv search: query='{query_en}', max_results={max_results}")
 
     client = arxiv.Client()
 
     for attempt in range(max_retries):
         try:
             search = arxiv.Search(
-                query=query,
+                query=query_en,
                 max_results=max_results,
                 sort_by=arxiv.SortCriterion.SubmittedDate,
             )
