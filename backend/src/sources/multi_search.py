@@ -16,17 +16,6 @@ def _is_cyrillic(text: str) -> bool:
     return bool(re.search(r"[а-яА-ЯёЁ]", text))
 
 
-def _translate_to_en(query: str) -> str:
-    if not _is_cyrillic(query):
-        return query
-    try:
-        from deep_translator import GoogleTranslator
-        return GoogleTranslator(source="auto", target="en").translate(query) or query
-    except Exception as e:
-        logger.warning(f"translate failed: {e}")
-        return query
-
-
 def _mk(doc_id, title, abstract, url, source_name, language, trust):
     return {
         "doc_id": doc_id,
@@ -40,7 +29,7 @@ def _mk(doc_id, title, abstract, url, source_name, language, trust):
 
 
 # ============================================================
-# 1. DuckDuckGo HTML — trust 5
+# 1. DuckDuckGo HTML
 # ============================================================
 async def search_duckduckgo(query: str, max_results: int = 20) -> List[Dict]:
     url = "https://html.duckduckgo.com/html/"
@@ -69,7 +58,7 @@ async def search_duckduckgo(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 2. Startpage HTML — trust 5 (прокси Google)
+# 2. Startpage HTML
 # ============================================================
 async def search_startpage(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -93,7 +82,7 @@ async def search_startpage(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 3. Mojeek HTML — trust 5 (независимый индекс)
+# 3. Mojeek HTML
 # ============================================================
 async def search_mojeek(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -117,7 +106,7 @@ async def search_mojeek(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 4. Marginalia — trust 4 (нишевые сайты)
+# 4. Marginalia
 # ============================================================
 async def search_marginalia(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -140,7 +129,7 @@ async def search_marginalia(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 5. OpenAlex — trust 9 (научные работы)
+# 5. OpenAlex
 # ============================================================
 async def search_openalex(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -174,7 +163,7 @@ async def search_openalex(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 6. Crossref — trust 9
+# 6. Crossref
 # ============================================================
 async def search_crossref(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -203,7 +192,7 @@ async def search_crossref(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 7. Semantic Scholar — trust 8 (иногда 403)
+# 7. Semantic Scholar
 # ============================================================
 async def search_semanticscholar(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -230,7 +219,7 @@ async def search_semanticscholar(query: str, max_results: int = 20) -> List[Dict
 
 
 # ============================================================
-# 8. PubMed E-utilities — trust 10
+# 8. PubMed
 # ============================================================
 async def search_pubmed(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -264,7 +253,7 @@ async def search_pubmed(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 9. Europe PMC — trust 9
+# 9. Europe PMC
 # ============================================================
 async def search_europepmc(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -291,7 +280,7 @@ async def search_europepmc(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 10. DOAJ — trust 9 (open-access журналы)
+# 10. DOAJ
 # ============================================================
 async def search_doaj(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -320,7 +309,7 @@ async def search_doaj(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 11. Zenodo — trust 8
+# 11. Zenodo
 # ============================================================
 async def search_zenodo(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -348,7 +337,7 @@ async def search_zenodo(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 12. HAL (Франция) — trust 8
+# 12. HAL
 # ============================================================
 async def search_hal(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -375,7 +364,7 @@ async def search_hal(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 13. bioRxiv — trust 8 (биология)
+# 13. bioRxiv
 # ============================================================
 async def search_biorxiv(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -408,7 +397,7 @@ async def search_biorxiv(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 14. Hacker News — trust 5
+# 14. Hacker News
 # ============================================================
 async def search_hackernews(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -434,7 +423,7 @@ async def search_hackernews(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 15. GitHub Search — trust 6
+# 15. GitHub Search
 # ============================================================
 async def search_github(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -464,7 +453,7 @@ async def search_github(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 16. Stack Exchange — trust 6
+# 16. Stack Exchange
 # ============================================================
 async def search_stackexchange(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -490,7 +479,7 @@ async def search_stackexchange(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 17. Reddit JSON — trust 4
+# 17. Reddit
 # ============================================================
 async def search_reddit(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -517,7 +506,7 @@ async def search_reddit(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 18. Dev.to — trust 5
+# 18. Dev.to
 # ============================================================
 async def search_devto(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -544,7 +533,7 @@ async def search_devto(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 19. Spaceflight News — trust 6
+# 19. Spaceflight News
 # ============================================================
 async def search_spaceflight(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -571,7 +560,7 @@ async def search_spaceflight(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 20. Habr (RSS best daily) — trust 6
+# 20. Habr (RSS best daily)
 # ============================================================
 async def search_habr(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
@@ -603,14 +592,13 @@ async def search_habr(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# 21. arXiv (обёртка) — trust 9
+# 21. arXiv (обёртка)
 # ============================================================
 async def search_arxiv_multi(query: str, max_results: int = 20) -> List[Dict]:
     docs = []
     try:
         from src.sources.arxiv import search_arxiv
-        query_en = _translate_to_en(query)
-        arxiv_docs = await search_arxiv(query_en, max_results=max_results) or []
+        arxiv_docs = await search_arxiv(query, max_results=max_results) or []
         for d in arxiv_docs:
             docs.append(_mk(
                 d.get("doc_id") or d.get("url") or "",
@@ -627,34 +615,49 @@ async def search_arxiv_multi(query: str, max_results: int = 20) -> List[Dict]:
 
 
 # ============================================================
-# Общая функция
+# Общая функция — принимает готовые query_ru и query_en
 # ============================================================
-async def search_all_sources(query: str, max_per_source: int = 20) -> List[Dict]:
-    logger.info(f"Multi-search: query='{query}', max_per_source={max_per_source}")
-    tasks = [
-        asyncio.create_task(search_duckduckgo(query, max_per_source)),
-        asyncio.create_task(search_startpage(query, max_per_source)),
-        asyncio.create_task(search_mojeek(query, max_per_source)),
-        asyncio.create_task(search_marginalia(query, max_per_source)),
-        asyncio.create_task(search_openalex(query, max_per_source)),
-        asyncio.create_task(search_crossref(query, max_per_source)),
-        asyncio.create_task(search_semanticscholar(query, max_per_source)),
-        asyncio.create_task(search_pubmed(query, max_per_source)),
-        asyncio.create_task(search_europepmc(query, max_per_source)),
-        asyncio.create_task(search_doaj(query, max_per_source)),
-        asyncio.create_task(search_zenodo(query, max_per_source)),
-        asyncio.create_task(search_hal(query, max_per_source)),
-        asyncio.create_task(search_biorxiv(query, max_per_source)),
-        asyncio.create_task(search_hackernews(query, max_per_source)),
-        asyncio.create_task(search_github(query, max_per_source)),
-        asyncio.create_task(search_stackexchange(query, max_per_source)),
-        asyncio.create_task(search_reddit(query, max_per_source)),
-        asyncio.create_task(search_devto(query, max_per_source)),
-        asyncio.create_task(search_spaceflight(query, max_per_source)),
-        asyncio.create_task(search_habr(query, max_per_source)),
-        asyncio.create_task(search_arxiv_multi(query, max_per_source)),
+async def search_all_sources(query_ru: str, query_en: str, max_per_source: int = 20) -> List[Dict]:
+    """
+    Принимает готовые запросы — не переводит.
+    query_ru — для русскоязычных источников.
+    query_en — для англоязычных.
+    """
+    logger.info(f"Multi-search: ru='{query_ru}', en='{query_en}', max_per_source={max_per_source}")
+
+    tasks_ru = [
+        asyncio.create_task(search_duckduckgo(query_ru, max_per_source)),
+        asyncio.create_task(search_startpage(query_ru, max_per_source)),
+        asyncio.create_task(search_mojeek(query_ru, max_per_source)),
+        asyncio.create_task(search_marginalia(query_ru, max_per_source)),
+        asyncio.create_task(search_habr(query_ru, max_per_source)),
     ]
-    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    tasks_en = [
+        asyncio.create_task(search_arxiv_multi(query_en, max_per_source)),
+        asyncio.create_task(search_openalex(query_en, max_per_source)),
+        asyncio.create_task(search_crossref(query_en, max_per_source)),
+        asyncio.create_task(search_pubmed(query_en, max_per_source)),
+        asyncio.create_task(search_europepmc(query_en, max_per_source)),
+        asyncio.create_task(search_doaj(query_en, max_per_source)),
+        asyncio.create_task(search_semanticscholar(query_en, max_per_source)),
+        asyncio.create_task(search_zenodo(query_en, max_per_source)),
+        asyncio.create_task(search_hal(query_en, max_per_source)),
+        asyncio.create_task(search_biorxiv(query_en, max_per_source)),
+        asyncio.create_task(search_hackernews(query_en, max_per_source)),
+        asyncio.create_task(search_github(query_en, max_per_source)),
+        asyncio.create_task(search_stackexchange(query_en, max_per_source)),
+        asyncio.create_task(search_reddit(query_en, max_per_source)),
+        asyncio.create_task(search_devto(query_en, max_per_source)),
+        asyncio.create_task(search_spaceflight(query_en, max_per_source)),
+    ]
+
+    # Если запрос уже на английском — не дублируем русские
+    if not _is_cyrillic(query_ru):
+        tasks_ru = []
+        tasks_en.append(asyncio.create_task(search_duckduckgo(query_en, max_per_source)))
+
+    results = await asyncio.gather(*(tasks_ru + tasks_en), return_exceptions=True)
 
     seen = set()
     unique: List[Dict] = []
@@ -669,7 +672,6 @@ async def search_all_sources(query: str, max_per_source: int = 20) -> List[Dict]
             seen.add(key)
             unique.append(d)
 
-    # сортируем по trust_level, потом по источнику
     unique.sort(key=lambda x: x.get("trust_level", 5), reverse=True)
     logger.info(f"Multi-search total unique: {len(unique)}")
     return unique

@@ -14,7 +14,7 @@ from src.scoring.scorer import score_text
 from src.ml.classifier import classify
 from src.embeddings.model import get_model
 
-app = FastAPI(title="Weak Signals API", version="1.1.0")
+app = FastAPI(title="Weak Signals API", version="1.6.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,16 +25,67 @@ app.add_middleware(
 
 _search_cache: Dict[str, dict] = {}
 
+# Кэш переводов, чтобы не звать GigaChat повторно на тот же запрос
+_translate_cache: Dict[str, str] = {}
+
 
 class SearchRequest(BaseModel):
     query: str
     limit: int = 15
 
 
-def _collect_live(query: str, max_per_source: int = 20) -> list:
+def _is_cyrillic(text: str) -> bool:
+    return bool(re.search(r"[а-яА-ЯёЁ]", text))
+
+
+def _translate_to_en(query: str) -> str:
+    """
+    Переводит русский запрос на английский через GigaChat.
+    Кэширует результат, чтобы не звать LLM повторно.
+    """
+    if not _is_cyrillic(query):
+        return query
+
+    key = query.strip().lower()
+    if key in _translate_cache:
+        return _translate_cache[key]
+
+    try:
+        from src.llm.client import get_llm
+
+        llm = get_llm()
+        system = "Ты — переводчик технических терминов. Отвечай только переводом."
+        prompt = (
+            "Переведи на английский язык следующий технический запрос. "
+            "Верни ТОЛЬКО перевод, без пояснений, без кавычек, без точек, "
+            "без вступительных слов. Только сам перевод.\n\n"
+            f"Запрос: {query}"
+        )
+        raw = llm.chat(system, prompt)
+        translated = raw.strip()
+        # Чистим возможные артефакты
+        translated = translated.strip('"').strip("'").strip(".").strip()
+        if "\n" in translated:
+            translated = translated.split("\n")[0].strip()
+
+        if not translated:
+            translated = query
+
+        logger.info(f"Translated: '{query}' → '{translated}'")
+        _translate_cache[key] = translated
+        return translated
+    except Exception as e:
+        logger.warning(f"translate failed: {e}")
+        return query
+
+
+def _collect_live(query_ru: str, query_en: str, max_per_source: int = 20) -> list:
+    """Принимает готовые запросы — не переводит."""
     from src.sources.multi_search import search_all_sources
     try:
-        docs = asyncio.run(search_all_sources(query, max_per_source=max_per_source))
+        docs = asyncio.run(
+            search_all_sources(query_ru, query_en, max_per_source=max_per_source)
+        )
         return docs
     except Exception as e:
         logger.warning(f"multi_search failed: {e}")
@@ -95,13 +146,16 @@ def _group_signals(signals: List[Dict]) -> List[Dict]:
                 g["trust_level"] = sig["trust_level"]
 
     result = list(groups.values())
-    result.sort(key=lambda x: (x["score"], x["trust_level"], x["sources_count"]), reverse=True)
+    result.sort(
+        key=lambda x: (x["score"], x["trust_level"], x["sources_count"]),
+        reverse=True,
+    )
     return result
 
 
 @app.get("/")
 def root():
-    return {"status": "ok", "service": "Weak Signals API", "version": "1.1.0"}
+    return {"status": "ok", "service": "Weak Signals API", "version": "1.6.0"}
 
 
 @app.get("/health")
@@ -130,7 +184,11 @@ def create_search(request: SearchRequest, db: Session = Depends(get_db)):
         return {"search_id": None, "query": query, "status": "failed", "signals": []}
 
     logger.info(f"Live search: {query}")
-    candidates = _collect_live(query, max_per_source=20)
+
+    # === ПЕРЕВОД ЧЕРЕЗ GIGACHAT — ОДИН РАЗ ЗА ЗАПРОС ===
+    query_en = _translate_to_en(query)
+
+    candidates = _collect_live(query, query_en, max_per_source=20)
     logger.info(f"Candidates collected: {len(candidates)}")
 
     model = get_model()
@@ -181,7 +239,7 @@ def create_search(request: SearchRequest, db: Session = Depends(get_db)):
             result = score_text(
                 db,
                 cand["_text"],
-                query=query,
+                query=query_en,
                 top_k=5,
                 doc_id=cand["doc_id"],
                 title=cand.get("title", ""),
@@ -195,9 +253,18 @@ def create_search(request: SearchRequest, db: Session = Depends(get_db)):
             logger.warning(f"Score failed for {cand.get('doc_id')}: {e}")
             continue
 
+        # Логируем результат LLM
+        logger.info(
+            f"LLM: {cand.get('title', '')[:50]} | "
+            f"is_weak={result.get('is_weak_signal')} | "
+            f"conf={result.get('confidence')} | "
+            f"cache={result.get('from_cache')} | "
+            f"why={result.get('why_weak_signal', '')[:80]}"
+        )
+
         if not result.get("is_weak_signal"):
             continue
-        if result.get("confidence", 0) < 0.6:
+        if result.get("confidence", 0) < 0.5:
             continue
 
         tech = (result.get("technology") or "").strip()
@@ -230,6 +297,7 @@ def create_search(request: SearchRequest, db: Session = Depends(get_db)):
     result = {
         "search_id": search_id,
         "query": query,
+        "query_en": query_en,
         "status": "completed",
         "signals": grouped,
         "processed_sources": len(candidates),

@@ -29,12 +29,14 @@ def train():
     X_val_s = scaler.transform(X_val)
     X_test_s = scaler.transform(X_test)
 
+    # C=0.3 (было 1.0) — больше регуляризации, меньше переобучения.
+    # max_iter=5000 (было 3000) — больше итераций для сходимости.
+    # multi_class убран — в sklearn 1.5+ он deprecated, автоматически multinomial.
     clf = LogisticRegression(
         class_weight="balanced",
-        max_iter=3000,
-        C=1.0,
+        max_iter=5000,
+        C=0.3,
         solver="lbfgs",
-        multi_class="multinomial",
     )
     clf.fit(X_train_s, y_train)
 
