@@ -7,6 +7,9 @@
 - POST /api/search — живой поиск и ранжирование слабых сигналов.
 - GET /api/search/{search_id} — получение ранее выполненного поиска (в памяти процесса).
 - GET /api/insight/{doc_id} — детализация по сигналу.
+- GET /api/candidates?q=&limit= — быстрый поиск по БД
+  (ScoredDocument + Document с научных доменов).
+  Используется SearchPage фронтенда.
 - GET /api/stats — статистика.
 - GET /health — проверка работоспособности.
 
